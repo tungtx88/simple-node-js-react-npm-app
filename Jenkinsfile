@@ -17,7 +17,6 @@ pipeline {
         stage('Test') {
             steps {
                 sh './jenkins/scripts/test.sh'
-                telegramSend 'Hello World'
             }
         }
         stage('Deliver') { 
@@ -25,6 +24,11 @@ pipeline {
                 sh './jenkins/scripts/deliver.sh' 
                 input message: 'Finished using the web site? (Click "Proceed" to continue)' 
                 sh './jenkins/scripts/kill.sh' 
+            }
+        }
+        stage('Build') {
+            steps {
+                telegramSend 'Hello World'
             }
         }
     }
