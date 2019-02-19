@@ -26,10 +26,12 @@ pipeline {
                 sh './jenkins/scripts/kill.sh' 
             }
         }
-        stage('Build') {
-            steps {
-                telegramSend 'Hello World'
-            }
+    }
+    post {
+        // Always runs. And it runs before any of the other post conditions.
+        always {
+            // Let's wipe out the workspace before we finish!
+            telegramSend 'Hello World'
         }
     }
 }
