@@ -1,0 +1,25 @@
+services:
+  # ...
+  node:
+    # image: "node:9-alpine"
+    build: ./proj
+    user: "node"
+    working_dir: /home/node/app
+    environment:
+      # - NODE_ENV=production
+      - NPM_CONFIG_PREFIX=/home/node/.npm-global
+      - PATH=$PATH:/home/node/.npm-global/bin
+    volumes:
+      - ./proj/:/home/node/app
+      - /home/node/app/node_modules/
+    ports:
+      - "3006:3001"
+    command: >
+      /bin/sh -c "echo hello
+      && ls -lh /home/node/app/
+      && npm install
+      && npm i -g babel-cli
+      && npm i -g flow-bin
+      && npm start"
+    depends_on:
+      - redis
