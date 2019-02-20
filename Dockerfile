@@ -20,7 +20,7 @@ RUN cd /tmp && yarn install
 RUN mkdir -p /var/jenkins_home/workspace/abca_master && cp -a /tmp/node_modules /var/jenkins_home/workspace/abca_master/
 WORKDIR /var/jenkins_home/workspace/abca_master/
 COPY . /var/jenkins_home/workspace/abca_master/
-CMD [ "yarn", "start" ]
-EXPOSE 3000
+# CMD [ "yarn", "start" ]
+# EXPOSE 3000
 
 
