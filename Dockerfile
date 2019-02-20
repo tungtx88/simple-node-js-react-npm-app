@@ -16,11 +16,11 @@
 FROM node:6-alpine
 # MAINTAINER Kobkrit Viriyayudhakorn (kobkrit@iapp.co.th)
 ADD package.json /tmp/package.json
-RUN cd /tmp && npm install
+RUN cd /tmp && yarn install
 RUN mkdir -p /var/jenkins_home/workspace/abca_master && cp -a /tmp/node_modules /var/jenkins_home/workspace/abca_master/
 WORKDIR /var/jenkins_home/workspace/abca_master/
 COPY . /var/jenkins_home/workspace/abca_master/
-CMD [ "npm", "start" ]
+CMD [ "yarn", "start" ]
 EXPOSE 3000
 
 
