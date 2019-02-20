@@ -1,5 +1,6 @@
 pipeline {
     agent {
+        dockerfile true
         docker {
             image 'node:6-alpine' 
             args '-p 3000:3000' 
@@ -27,11 +28,11 @@ pipeline {
             }
         }
     }
-    post {
-        // Always runs. And it runs before any of the other post conditions.
-        always {
-            // Let's wipe out the workspace before we finish!
-            telegramSend 'Hello World'
-        }
-    }
+    // post {
+    //     // Always runs. And it runs before any of the other post conditions.
+    //     always {
+    //         // Let's wipe out the workspace before we finish!
+    //         telegramSend 'Hello World'
+    //     }
+    // }
 }
