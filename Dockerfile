@@ -5,12 +5,11 @@ MAINTAINER David Weinstein <david@bitjudo.com>
 # when we change our application's nodejs dependencies:
 COPY package.json /tmp/package.json
 RUN cd /tmp && npm install
-RUN mkdir -p /opt/app && cp -a /tmp/node_modules /opt/app/
+RUN mkdir -p /opt/app && cp -a /tmp/node_modules /var/jenkins_home/workspace/abca_master/
 
 # From here we load our application's code in, therefore the previous docker
 # "layer" thats been cached will be used if possible
-WORKDIR /opt/app
-COPY . /opt/app
-
+WORKDIR /var/jenkins_home/workspace/abca_master
+COPY . /var/jenkins_home/workspace/abca_master
 EXPOSE 3000
 
