@@ -31,15 +31,15 @@ pipeline {
     post {
         always {
             echo 'This will always run'
-            telegramSend 'Build Finished'
+            //telegramSend "Jenkins build ${env.BUILD_NUMBER}"
         }
         success {
             echo 'This will run only if successful'
-            telegramSend 'Build success'
+            //telegramSend 'Build success'
         }
         failure {
             echo 'Buil failed'
-            telegramSend "Build failed: Project: ${env.JOB_NAME} <br>Build Number: ${env.BUILD_NUMBER} <br> URL: ${env.BUILD_URL}"
+            telegramSend "Build failed: Project: ${env.JOB_NAME} \n Build Number: ${env.BUILD_NUMBER} \n URL: ${env.BUILD_URL} \n Git Branch: ${env.GIT_BRANCH}"
         }
         unstable {
             echo 'This will run only if the run was marked as unstable'
