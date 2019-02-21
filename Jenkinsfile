@@ -31,14 +31,15 @@ pipeline {
     post {
         always {
             echo 'This will always run'
-            telegramSend 'Hello World'
+            telegramSend 'Build Finished'
         }
         success {
             echo 'This will run only if successful'
-            telegramSend 'Hello World Success'
+            telegramSend 'Build success'
         }
         failure {
-            echo 'This will run only if failed'
+            echo 'Buil failed'
+            telegramSend "Build failed: Project: ${env.JOB_NAME} <br>Build Number: ${env.BUILD_NUMBER} <br> URL: ${env.BUILD_URL}"
         }
         unstable {
             echo 'This will run only if the run was marked as unstable'
