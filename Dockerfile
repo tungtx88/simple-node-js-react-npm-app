@@ -3,8 +3,10 @@ FROM alpine:3.8
 
 ENV NODE_VERSION 8.15.0
 
+ENV YARN_VERSION 1.12.3
+
 # Versions
-RUN npm -v
+RUN yarn -v
 RUN node -v
 
 RUN npm cache clean
@@ -16,7 +18,7 @@ RUN cd /tmp
 
 RUN ls /tmp/
 
-RUN npm install
+RUN yarn install
 
 RUN ls /tmp/
 # Create app directory
@@ -37,7 +39,7 @@ COPY . /usr/src/app
 # RUN npm run start:build
 
 # Main command
-CMD [ "npm", "run", "start" ]
+CMD [ "yarn", "start" ]
 
 # Port to listener
 EXPOSE 3000
