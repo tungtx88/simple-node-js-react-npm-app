@@ -35,7 +35,8 @@ pipeline {
         }
         success {
             echo 'This will run only if successful'
-            //telegramSend 'Build success'
+            telegramSend "Build Success: Project: ${env.JOB_NAME} \n Build Number: ${env.BUILD_NUMBER} \n URL: ${env.BUILD_URL} \n Git Branch: ${env.GIT_BRANCH}"
+
         }
         failure {
             echo 'Buil failed'
