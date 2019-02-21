@@ -12,7 +12,7 @@ pipeline {
     stages {
         stage('Build') { 
             steps {
-                sh 'npm install' 
+                sh 'npm install --no-optional && npm cache clean --force' 
             }
         }
         stage('Test') {

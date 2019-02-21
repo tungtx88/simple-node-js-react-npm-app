@@ -27,20 +27,20 @@
 FROM node:8-alpine
 
 WORKDIR /tmp
-COPY package.json package-lock.json* ./
+COPY package.json yarn.lock* ./
 
-RUN npm install --no-optional && npm cache clean --force
+RUN yarn install
 
 RUN mkdir -p /var/jenkins_home/workspace/abca_master
 RUN ls /var/jenkins_home/workspace/abca_master/
 
 RUN cp -a /tmp/node_modules /var/jenkins_home/workspace/abca_master/
-RUN ls /var/jenkins_home/workspace/abca_master/
-RUN ls /var/jenkins_home/workspace/abca_master/node_modules/
+#RUN ls /var/jenkins_home/workspace/abca_master/
+#RUN ls /var/jenkins_home/workspace/abca_master/node_modules/
 
 WORKDIR /var/jenkins_home/workspace/abca_master
 COPY . /var/jenkins_home/workspace/abca_master
-RUN ls /var/jenkins_home/workspace/abca_master/node_modules/
+#RUN ls /var/jenkins_home/workspace/abca_master/node_modules/
 
 # CMD [ "npm", "run", "start" ]
 
