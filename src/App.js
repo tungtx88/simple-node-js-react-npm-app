@@ -11,7 +11,7 @@ class App extends Component {
           <h1 className="App-title">Welcome to React tung tung test push 1aa</h1>
         </header>
         <p className="App-intro">
-          To get started, edit this <code>src/App.js 1 22</code> and save to reload.
+          To get started, edit this <code>src/App.js 1 22 3</code> and save to reload.
         </p>
       </div>
     );
