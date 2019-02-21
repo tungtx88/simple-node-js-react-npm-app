@@ -31,9 +31,11 @@ pipeline {
     post {
         always {
             echo 'This will always run'
+            telegramSend 'Hello World'
         }
         success {
             echo 'This will run only if successful'
+            telegramSend 'Hello World Success'
         }
         failure {
             echo 'This will run only if failed'
