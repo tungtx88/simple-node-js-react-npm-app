@@ -33,8 +33,8 @@ RUN npm install --no-optional && npm cache clean --force
 RUN mkdir -p /var/jenkins_home/workspace/abca_master
 RUN ls /var/jenkins_home/workspace/abca_master/
 
-RUN cp -a ./node_modules /var/jenkins_home/workspace/abca_master/
-
+RUN cp -a /tmp/node_modules /var/jenkins_home/workspace/abca_master/
+RUN ls /var/jenkins_home/workspace/abca_master/
 
 WORKDIR /var/jenkins_home/workspace/abca_master
 COPY . /var/jenkins_home/workspace/abca_master
