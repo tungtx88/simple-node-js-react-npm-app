@@ -1,19 +1,19 @@
 # Extending image
-FROM node:8-alpine
+FROM node:9
 
 # Versions
-RUN yarn -v
-RUN node -v
+# RUN yarn -v
+# RUN node -v
 
 # Install app dependencies
-COPY package.json /tmp/package.json
+ADD package.json /tmp/package.json
 # COPY package-lock.json /usr/src/app/
-RUN cd /tmp & yarn install
+RUN cd /tmp && npm install
 
 RUN ls /tmp/
 
 # Create app directory
-RUN mkdir -p /usr/src/app & cp -a /tmp/node_modules /usr/src/app/
+RUN mkdir -p /usr/src/app && cp -a /tmp/node_modules /usr/src/app/
 
 WORKDIR /usr/src/app
 
