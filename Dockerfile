@@ -8,13 +8,10 @@ RUN node -v
 # Install app dependencies
 COPY package.json /tmp/package.json
 # COPY package-lock.json /usr/src/app/
-RUN cd /tmp
+RUN cd /tmp & yarn install
 
 RUN ls /tmp/
 
-RUN yarn install
-
-RUN ls /tmp/
 # Create app directory
 RUN mkdir -p /usr/src/app & cp -a /tmp/node_modules /usr/src/app/
 
