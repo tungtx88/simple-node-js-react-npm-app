@@ -1,5 +1,7 @@
 # Extending image
-FROM node:6-alpine
+FROM alpine:3.8
+
+ENV NODE_VERSION 8.15.0
 
 # Versions
 RUN npm -v
