@@ -27,7 +27,8 @@
 FROM node:8-alpine
 
 WORKDIR /tmp
-COPY package.json yarn.lock* ./
+RUN ls ./
+COPY package.json ./
 
 RUN yarn install
 
