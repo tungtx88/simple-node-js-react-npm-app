@@ -39,7 +39,7 @@ RUN ls /var/jenkins_home/workspace/abca_master/node_modules/
 
 WORKDIR /var/jenkins_home/workspace/abca_master
 COPY . /var/jenkins_home/workspace/abca_master
-RUN ls /var/jenkins_home/workspace/abca_master/
+RUN ls /var/jenkins_home/workspace/abca_master/node_modules/
 
 # CMD [ "npm", "run", "start" ]
 
