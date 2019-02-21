@@ -30,8 +30,8 @@ WORKDIR /tmp
 COPY package.json package-lock.json* ./
 RUN npm install --no-optional && npm cache clean --force
 
-# RUN mkdir -p /usr/src/app 
-RUN ls /var/jenkins_home/workspace/abca_master
+RUN mkdir -p /var/jenkins_home/workspace/abca_master
+RUN ls /var/jenkins_home/workspace/abca_master/
 
 RUN cp -a ./node_modules /var/jenkins_home/workspace/abca_master/
 
