@@ -1,7 +1,7 @@
 pipeline {
     agent {
         docker {
-             image 'node:9-alpine' 
+             image 'node:6-alpine' 
              args '-p 3000:3000' 
         }
        //dockerfile true
@@ -12,7 +12,7 @@ pipeline {
     stages {
         stage('Build') { 
             steps {
-                sh 'yarn install' 
+                sh 'npm install' 
             }
         }
         stage('Test') {
