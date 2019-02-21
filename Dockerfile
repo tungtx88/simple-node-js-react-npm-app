@@ -27,13 +27,13 @@
 FROM node:8-alpine
 
 WORKDIR /tmp
-RUN ls ./
+#RUN ls ./
 COPY package.json ./
 
 RUN yarn install
 
 RUN mkdir -p /var/jenkins_home/workspace/abca_master
-RUN ls /var/jenkins_home/workspace/abca_master/
+#RUN ls /var/jenkins_home/workspace/abca_master/
 
 RUN cp -a /tmp/node_modules /var/jenkins_home/workspace/abca_master/
 #RUN ls /var/jenkins_home/workspace/abca_master/
@@ -41,7 +41,7 @@ RUN cp -a /tmp/node_modules /var/jenkins_home/workspace/abca_master/
 
 WORKDIR /var/jenkins_home/workspace/abca_master
 COPY . /var/jenkins_home/workspace/abca_master
-RUN ls /var/jenkins_home/workspace/abca_master/
+#RUN ls /var/jenkins_home/workspace/abca_master/
 
 # CMD [ "npm", "run", "start" ]
 
