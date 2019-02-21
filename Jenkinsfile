@@ -1,19 +1,23 @@
 pipeline {
     agent {
-        docker {
-             image 'node:6-alpine' 
-             args '-p 3000:3000' 
-        }
-       //dockerfile true
+        // docker {
+        //      image 'node:6-alpine' 
+        //      args '-p 3000:3000' 
+        // }
+       dockerfile true
     }
     environment {
         CI = 'true'
     }
     stages {
-        stage('Build') { 
-            steps {
-                sh 'yarn install' 
-            }
+        stage('Checkout') {
+            checkout scm
+        }
+        stage('Environment') {
+            sh 'git --version'
+            echo "Branch: ${env.BRANCH_NAME}"
+            sh 'docker -v'
+            sh 'printenv'
         }
         stage('Test') {
             steps {
