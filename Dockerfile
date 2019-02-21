@@ -26,13 +26,14 @@
 
 FROM node:8-alpine
 
-WORKDIR /opt
+WORKDIR /tmp
 COPY package.json package-lock.json* ./
 RUN npm install --no-optional && npm cache clean --force
-ENV PATH /opt/node_modules/.bin:$PATH
 
-WORKDIR /opt/app
-COPY . /opt/app
+RUN mkdir -p /usr/src/app && cp -a /tmp/node_modules /usr/src/app/
+
+WORKDIR /usr/src/app
+COPY . /usr/src/app/
 
 CMD [ "npm", "run", "start" ]
 
