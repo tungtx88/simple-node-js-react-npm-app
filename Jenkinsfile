@@ -11,13 +11,19 @@ pipeline {
     }
     stages {
         stage('Checkout') {
-            checkout scm
+            steps {
+                checkout scm
+            }
+            
         }
         stage('Environment') {
-            sh 'git --version'
-            echo "Branch: ${env.BRANCH_NAME}"
-            sh 'docker -v'
-            sh 'printenv'
+            steps {
+                sh 'git --version'
+                echo "Branch: ${env.BRANCH_NAME}"
+                sh 'docker -v'
+                sh 'printenv'
+            }
+            
         }
         stage('Test') {
             steps {
