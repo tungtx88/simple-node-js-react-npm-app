@@ -32,7 +32,11 @@ RUN npm install --no-optional && npm cache clean --force
 
 RUN mkdir -p /usr/src/app && cp -a ./node_modules /usr/src/app/
 
+RUN ls /user/src/app
+
 WORKDIR /usr/src/app
+RUN ls /user/src/app
+COPY /tmp/node_modules ./
 COPY . /usr/src/app/
 
 # CMD [ "npm", "run", "start" ]
