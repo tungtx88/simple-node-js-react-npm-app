@@ -28,6 +28,7 @@ FROM node:8-alpine
 
 WORKDIR /tmp
 COPY package.json package-lock.json* ./
+RUN rm package-lock.json
 RUN npm install --no-optional && npm cache clean --force
 
 RUN mkdir -p /var/jenkins_home/workspace/abca_master
