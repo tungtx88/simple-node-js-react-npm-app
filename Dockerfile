@@ -1,9 +1,5 @@
 # Extending image
-FROM alpine:3.8
-
-ENV NODE_VERSION 8.15.0
-
-ENV YARN_VERSION 1.12.3
+FROM node:8-alpine
 
 # Versions
 RUN yarn -v
