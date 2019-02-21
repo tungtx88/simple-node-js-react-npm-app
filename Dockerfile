@@ -10,6 +10,8 @@ COPY package.json /tmp/package.json
 # COPY package-lock.json /usr/src/app/
 RUN cd /tmp
 
+RUN ls /tmp/
+
 RUN npm install
 
 RUN ls /tmp/
