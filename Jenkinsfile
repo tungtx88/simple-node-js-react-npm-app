@@ -35,12 +35,12 @@ pipeline {
         }
         success {
             echo 'This will run only if successful'
-            telegramSend "Build Success: Project: ${env.JOB_NAME} \n Build Number: ${env.BUILD_NUMBER} \n URL: ${env.BUILD_URL} \n Git Branch: ${env.GIT_BRANCH}"
+            telegramSend "Build Success: Project: ${env.JOB_NAME} \nBuild Number: ${env.BUILD_NUMBER} \nURL: ${env.BUILD_URL} \nGit Branch: ${env.GIT_BRANCH}"
 
         }
         failure {
             echo 'Buil failed'
-            telegramSend "Build failed: Project: ${env.JOB_NAME} \n Build Number: ${env.BUILD_NUMBER} \n URL: ${env.BUILD_URL} \n Git Branch: ${env.GIT_BRANCH}"
+            telegramSend "Build failed: Project: ${env.JOB_NAME} \nBuild Number: ${env.BUILD_NUMBER} \nURL: ${env.BUILD_URL} \nGit Branch: ${env.GIT_BRANCH}"
         }
         unstable {
             echo 'This will run only if the run was marked as unstable'
