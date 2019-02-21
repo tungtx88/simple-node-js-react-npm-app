@@ -10,11 +10,11 @@ pipeline {
         CI = 'true'
     }
     stages {
-        // stage('Build') { 
-        //     steps {
-        //         sh 'yarn install' 
-        //     }
-        // }
+        stage('Build') { 
+            steps {
+                sh 'yarn install' 
+            }
+        }
         stage('Test') {
             steps {
                 sh './jenkins/scripts/test.sh'
