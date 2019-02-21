@@ -5,6 +5,8 @@ FROM node:6-alpine
 RUN npm -v
 RUN node -v
 
+RUN npm cache clean
+
 # Install app dependencies
 COPY package.json /tmp/package.json
 # COPY package-lock.json /usr/src/app/
