@@ -1,8 +1,8 @@
 node {
   try {
-    // stage('Checkout') {
-    //   checkout scm
-    // }
+    stage('Checkout') {
+      checkout scm
+    }
     stage('Environment') {
       sh 'git --version'
       echo "Branch: ${env.BRANCH_NAME}"
@@ -10,7 +10,7 @@ node {
       sh 'printenv'
     }
     stage('Build Docker test'){
-     sh 'docker build -t react-test -f ./Dockerfile.test --no-cache .'
+     sh 'docker build -t react-test -f Dockerfile2 --no-cache .'
     }
     stage('Docker test'){
       sh 'docker run --rm react-test'
