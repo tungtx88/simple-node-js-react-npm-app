@@ -6,7 +6,7 @@ RUN npm -v
 RUN node -v
 
 # Install app dependencies
-ADD package.json /tmp/package.json
+COPY package.json /tmp/package.json
 # COPY package-lock.json /usr/src/app/
 RUN cd /tmp & npm install
 
