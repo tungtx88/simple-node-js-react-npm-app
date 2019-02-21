@@ -40,7 +40,7 @@ RUN cp -a /tmp/node_modules /var/jenkins_home/workspace/abca_master/
 
 WORKDIR /var/jenkins_home/workspace/abca_master
 COPY . /var/jenkins_home/workspace/abca_master
-#RUN ls /var/jenkins_home/workspace/abca_master/node_modules/
+RUN ls /var/jenkins_home/workspace/abca_master/
 
 # CMD [ "npm", "run", "start" ]
 
