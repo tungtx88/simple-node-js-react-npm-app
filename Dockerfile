@@ -35,6 +35,6 @@ RUN mkdir -p /usr/src/app && cp -a ./node_modules /usr/src/app/
 WORKDIR /usr/src/app
 COPY . /usr/src/app/
 
-CMD [ "npm", "run", "start" ]
+# CMD [ "npm", "run", "start" ]
 
-EXPOSE 3000
+# EXPOSE 3000
