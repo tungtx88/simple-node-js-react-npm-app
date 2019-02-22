@@ -40,7 +40,7 @@ pipeline {
         }
         failure {
             echo 'Buil failed'
-            telegramSend "Build failed: Project: ${env.JOB_NAME} \nBuild Number: ${env.BUILD_NUMBER} \nURL: ${env.BUILD_URL} \nGit Branch: ${env.GIT_BRANCH} \nBuild log: ${BUILD_LOG, maxLines=9999, escapeHtml=false}"
+            telegramSend "Build failed: Project: ${env.JOB_NAME} \nBuild Number: ${env.BUILD_NUMBER} \nURL: ${env.BUILD_URL} \nGit Branch: ${env.GIT_BRANCH} \nBuild log: ${env.BUILD_LOG, maxLines=9999, escapeHtml=false}"
         }
         unstable {
             echo 'This will run only if the run was marked as unstable'
