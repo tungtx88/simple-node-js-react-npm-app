@@ -2,25 +2,25 @@ pipeline {
     /*
     agent {
         docker {
-              image 'node:8-alpine' 
-              args '-p 3000:3000' 
+              image 'node:8-alpine'
+              args '-p 3000:3000'
         }
        //dockerfile true
     }*/
     agent any
-    
+
     environment {
         CI = 'true'
     }
-    
+
     stages {
-        stage('Prepare') { 
+        stage('Prepare') {
             steps {
                 sh 'npm ci'
-                
+
             }
         }
-        
+
         stage('build') {
             steps {
                 script {
@@ -28,7 +28,7 @@ pipeline {
                 }
             }
         }
-        
+
         stage('Test') {
             steps {
                 sh './jenkins/scripts/test.sh'
@@ -37,7 +37,15 @@ pipeline {
                 }
             }
         }
-        
+
+        stage('Deliver') {
+            steps {
+                sh './jenkins/scripts/deliver.sh'
+                input message: 'Finished using the web site? (Click "Proceed" to continue)'
+                sh './jenkins/scripts/kill.sh'
+            }
+        }
+
     }
         /*
         stage('Test') {
@@ -45,12 +53,12 @@ pipeline {
                 sh './jenkins/scripts/test.sh'
             }
         }
-        
-        stage('Deliver') {  
+
+        stage('Deliver') {
             steps {
-                sh './jenkins/scripts/deliver.sh' 
-                input message: 'Finished using the web site? (Click "Proceed" to continue)' 
-                sh './jenkins/scripts/kill.sh' 
+                sh './jenkins/scripts/deliver.sh'
+                input message: 'Finished using the web site? (Click "Proceed" to continue)'
+                sh './jenkins/scripts/kill.sh'
             }
         }
     }
@@ -71,13 +79,13 @@ pipeline {
                     withEnv(['JIRA_SITE=vbee']) {
                         def serverInfo = jiraGetServerInfo()
                         echo serverInfo.data.toString()
-                        
+
                         def project = jiraGetProject idOrKey: 'VBEE'
                         //echo project.data.toString()
-                        
+
                         def issue = jiraGetIssue idOrKey: 'VBEE-7'
                         //echo issue.data.toString()
-                        
+
                         def testIssue = [fields: [ // id or key must present for project.
                                project: [id: '10000'],
                                summary: 'New JIRA Created from Jenkins.',
@@ -90,7 +98,7 @@ pipeline {
 
                         echo response.successful.toString()
                         echo response.data.toString()
-                        
+
                     }
                 }
             telegramSend "Build failed: Project: ${env.JOB_NAME} \nBuild Number: ${env.BUILD_NUMBER} \nURL: ${env.BUILD_URL} \nGit Branch: ${env.GIT_BRANCH}"
