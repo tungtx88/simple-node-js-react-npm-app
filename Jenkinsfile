@@ -8,6 +8,7 @@ pipeline {
        //dockerfile true
     }*/
     agent any
+    
     environment {
         CI = 'true'
     }
