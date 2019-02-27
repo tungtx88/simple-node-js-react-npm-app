@@ -29,6 +29,15 @@ pipeline {
             }
         }
         
+        stage('Test') {
+            steps {
+                sh './jenkins/scripts/test.sh'
+                script {
+                    echo 'Test Stage'
+                }
+            }
+        }
+        
     }
         /*
         stage('Test') {
