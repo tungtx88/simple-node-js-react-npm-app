@@ -18,12 +18,14 @@ pipeline {
             steps {
                 sh 'rm -rf ./package-lock.json'
                 sh 'npm install'
+                sh 'ls ./node_modules/'
 
             }
         }
 
         stage('build') {
             steps {
+                sh 'vim ./packages.json'
                 script {
                     echo 'Build Stage'
                 }
