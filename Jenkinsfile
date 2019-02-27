@@ -16,6 +16,7 @@ pipeline {
     stages {
         stage('Install Packages') {
             steps {
+                sh 'rm -rf ./package-lock.json'
                 sh 'npm install'
 
             }
