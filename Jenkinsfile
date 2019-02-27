@@ -41,7 +41,7 @@ pipeline {
                                description: 'New JIRA Created from Jenkins.',
                                customfield_1000: 'customValue',
                                // id or name must present for issueType.
-                               issuetype: [id: '3']]]
+                               issuetype: [id: '10002']]]
 
                         response = jiraNewIssue issue: testIssue
 
