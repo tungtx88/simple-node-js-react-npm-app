@@ -16,7 +16,6 @@ pipeline {
     stages {
         stage('Install Packages') {
             steps {
-                sh 'rm -rf ./package-lock.json'
                 sh 'npm install'
                 sh 'ls ./node_modules/'
 
@@ -25,7 +24,6 @@ pipeline {
 
         stage('build') {
             steps {
-                sh 'vim ./packages.json'
                 script {
                     echo 'Build Stage'
                 }
