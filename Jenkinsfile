@@ -21,9 +21,28 @@ pipeline {
                 sh './jenkins/scripts/test.sh'
             }
         }
-        stage('JIRA') {
+        
+        stage('Deliver') {  
             steps {
-                script {
+                sh './jenkins/scripts/deliver.sh' 
+                input message: 'Finished using the web site? (Click "Proceed" to continue)' 
+                sh './jenkins/scripts/kill.sh' 
+            }
+        }
+    }
+    post {
+        always {
+            echo 'This will always run'
+            //telegramSend "Jenkins build ${env.BUILD_NUMBER}"
+        }
+        success {
+            echo 'This will run only if successful'
+            telegramSend "Build Success: Project: ${env.JOB_NAME} \nBuild Number: ${env.BUILD_NUMBER} \nURL: ${env.BUILD_URL} \nGit Branch: ${env.GIT_BRANCH}"
+
+        }
+        failure {
+            echo 'Buil failed'
+            script {
                     echo "Connecting with jira"
                     withEnv(['JIRA_SITE=vbee']) {
                         def serverInfo = jiraGetServerInfo()
@@ -50,28 +69,6 @@ pipeline {
                         
                     }
                 }
-            }
-        }
-        stage('Deliver') {  
-            steps {
-                sh './jenkins/scripts/deliver.sh' 
-                input message: 'Finished using the web site? (Click "Proceed" to continue)' 
-                sh './jenkins/scripts/kill.sh' 
-            }
-        }
-    }
-    post {
-        always {
-            echo 'This will always run'
-            //telegramSend "Jenkins build ${env.BUILD_NUMBER}"
-        }
-        success {
-            echo 'This will run only if successful'
-            telegramSend "Build Success: Project: ${env.JOB_NAME} \nBuild Number: ${env.BUILD_NUMBER} \nURL: ${env.BUILD_URL} \nGit Branch: ${env.GIT_BRANCH}"
-
-        }
-        failure {
-            echo 'Buil failed'
             telegramSend "Build failed: Project: ${env.JOB_NAME} \nBuild Number: ${env.BUILD_NUMBER} \nURL: ${env.BUILD_URL} \nGit Branch: ${env.GIT_BRANCH}"
         }
         unstable {
