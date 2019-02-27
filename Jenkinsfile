@@ -14,12 +14,21 @@ pipeline {
     }
     
     stages {
-        stage('Build') { 
+        stage('Prepare') { 
             steps {
-                sh 'npm install' 
+                sh 'yarn install' 
                 
             }
         }
+        
+        stage('build') {
+            steps {
+                script {
+                    echo 'Build Stage'
+                }
+            }
+        }
+        
     }
         /*
         stage('Test') {
