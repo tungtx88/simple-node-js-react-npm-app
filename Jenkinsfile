@@ -26,13 +26,14 @@ pipeline {
                     echo "Connecting with jira"
                     withEnv(['JIRA_SITE=vbee']) {
                         def searchResults = jiraJqlSearch jql: "project = VBEE AND issuekey = 'VBEE-7'"
-                        def issues = searchResults.data.issues
-                        for (i = 0; i <issues.size(); i++) {
-                            def fixVersion = jiraNewVersion version: [name: "new-fix-version-1.0",
-                                                            project: "VBEE"]
-                            def testIssue = [fields: [fixVersions: [fixVersion.data]]]
-                            response = jiraEditIssue idOrKey: issues[i].key, issue: testIssue
-                        }
+                        echo searchResults
+                        //def issues = searchResults.data.issues
+                        //for (i = 0; i <issues.size(); i++) {
+                            //def fixVersion = jiraNewVersion version: [name: "new-fix-version-1.0",
+                                                            //project: "VBEE"]
+                            //def testIssue = [fields: [fixVersions: [fixVersion.data]]]
+                            //response = jiraEditIssue idOrKey: issues[i].key, issue: testIssue
+                        //}
                     }
                 }
             }
