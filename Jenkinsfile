@@ -27,6 +27,9 @@ pipeline {
                     withEnv(['JIRA_SITE=vbee']) {
                         def serverInfo = jiraGetServerInfo()
                         echo serverInfo.data.toString()
+                        
+                        def project = jiraGetProject idOrKey: 'VBEE'
+                        echo project.data.toString()
                     }
                 }
             }
