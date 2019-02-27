@@ -33,6 +33,7 @@ pipeline {
                         
                         def issue = jiraGetIssue idOrKey: 'VBEE-7'
                         echo issue.data.toString()
+                        
                     }
                 }
             }
