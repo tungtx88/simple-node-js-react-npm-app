@@ -29,7 +29,10 @@ pipeline {
                         echo serverInfo.data.toString()
                         
                         def project = jiraGetProject idOrKey: 'VBEE'
-                        echo project.data.toString()
+                        //echo project.data.toString()
+                        
+                        def issue = jiraGetIssue idOrKey: 'VBEE-7'
+                        echo issue.data.toString()
                     }
                 }
             }
