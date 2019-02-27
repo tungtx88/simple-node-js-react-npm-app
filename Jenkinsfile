@@ -16,7 +16,7 @@ pipeline {
     stages {
         stage('Prepare') { 
             steps {
-                sh 'yarn install' 
+                sh 'npm ci'
                 
             }
         }
